@@ -1,8 +1,16 @@
 # portfolio_5602623
 
-A new Flutter project.
+Das ist mein erstes Portfolio-Projekt, die für die erste Aufgabe im EGB erstellt wurde. Es zeigt eine einfache Startseite, die meinen Namen und Matrikelnummer anzeigt.
+
+## Flutter-Version
+- Flutter Version: 3.29.3
 
 ## Getting Started
+
+1. Stelle sicher, dass Flutter auf deinem System installiert ist.
+2. "Klone" das Repository:
+   ```bash
+   git clone https://github.com/Jaouad326/portfolio_5602623
 
 This project is a starting point for a Flutter application.
 
