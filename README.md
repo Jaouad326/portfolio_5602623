@@ -8,6 +8,7 @@ Das ist mein erstes Portfolio-Projekt, die für die erste Aufgabe im EGB erstell
 
 ## Kontaktdaten
 THM-Mail: jaouad.achamlal@mnd.thm.de
+
 Privat-Mail: a.jaouad326@gmail.com
 
 ## Getting Started
