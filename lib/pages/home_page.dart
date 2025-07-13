@@ -1,153 +1,121 @@
 import 'package:flutter/material.dart';
+import '../widgets/main_app_bar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool isMobile = MediaQuery.of(context).size.width < 600;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Mein Portfolio'),
-        centerTitle: false,
-        leading:
-            isMobile
-                ? IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () => Scaffold.of(context).openDrawer(),
-                )
-                : null,
-        actions:
-            isMobile
-                ? null
-                : [
-                  TextButton(
-                    onPressed:
-                        ModalRoute.of(context)?.settings.name != '/'
-                            ? () => Navigator.pushReplacementNamed(context, '/')
-                            : null,
-                    child: const Text('Home'),
-                  ),
-                  TextButton(
-                    onPressed:
-                        ModalRoute.of(context)?.settings.name != '/projects'
-                            ? () => Navigator.pushReplacementNamed(
-                              context,
-                              '/projects',
-                            )
-                            : null,
-                    child: const Text('Work'),
-                  ),
-                  TextButton(
-                    onPressed:
-                        ModalRoute.of(context)?.settings.name != '/about'
-                            ? () => Navigator.pushReplacementNamed(
-                              context,
-                              '/about',
-                            )
-                            : null,
-                    child: const Text('About'),
-                  ),
-                  TextButton(
-                    onPressed:
-                        ModalRoute.of(context)?.settings.name != '/contact'
-                            ? () => Navigator.pushReplacementNamed(
-                              context,
-                              '/contact',
-                            )
-                            : null,
-                    child: const Text('Contact'),
-                  ),
-                ],
-      ),
-      drawer:
-          isMobile
-              ? Drawer(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: [
-                    const DrawerHeader(
-                      decoration: BoxDecoration(color: Colors.blueGrey),
-                      child: Text(
-                        'Navigation',
-                        style: TextStyle(color: Colors.white, fontSize: 20),
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text('Home'),
-                      onTap: () {
-                        Navigator.pop(context);
-                        if (ModalRoute.of(context)?.settings.name != '/') {
-                          Navigator.pushReplacementNamed(context, '/');
-                        }
-                      },
-                    ),
-                    ListTile(
-                      title: const Text('Work'),
-                      onTap: () {
-                        Navigator.pop(context);
-                        if (ModalRoute.of(context)?.settings.name !=
-                            '/projects') {
-                          Navigator.pushReplacementNamed(context, '/projects');
-                        }
-                      },
-                    ),
-                    ListTile(
-                      title: const Text('About'),
-                      onTap: () {
-                        Navigator.pop(context);
-                        if (ModalRoute.of(context)?.settings.name != '/about') {
-                          Navigator.pushReplacementNamed(context, '/about');
-                        }
-                      },
-                    ),
-                    ListTile(
-                      title: const Text('Contact'),
-                      onTap: () {
-                        Navigator.pop(context);
-                        if (ModalRoute.of(context)?.settings.name !=
-                            '/contact') {
-                          Navigator.pushReplacementNamed(context, '/contact');
-                        }
-                      },
-                    ),
-                  ],
+      extendBodyBehindAppBar: true,
+      appBar: const MainAppBar(currentRoute: '/'),
+      body: Column(
+        children: [
+          // Hero-Bereich mit blau-weißem Gradient
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.white, Color(0xFF007AFF)],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
                 ),
-              )
-              : null,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Hallo, ich bin Jaouad.',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hallo, ich bin Jaouad.',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge
+                            ?.copyWith(color: Colors.black),
+                      ),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Willkommen auf meinem Portfolio!',
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium
+                            ?.copyWith(color: Colors.black87),
+                      ),
+                      const SizedBox(height: 32),
+                      Wrap(
+                        spacing: 16,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () => Navigator.pushReplacementNamed(
+                                context, '/projects'),
+                            child: const Text('Projekte ansehen'),
+                          ),
+                          OutlinedButton(
+                            onPressed: () =>
+                                Navigator.pushReplacementNamed(
+                                    context, '/contact'),
+                            style: OutlinedButton.styleFrom(
+                              side: const BorderSide(color: Color(0xFF007AFF)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 32, vertical: 16),
+                              foregroundColor: const Color(0xFF007AFF),
+                            ),
+                            child: const Text('Kontakt'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ),
-            const SizedBox(height: 12),
-            const Text(
-              'Willkommen in meinem Portfolio-Projekt.',
-              style: TextStyle(fontSize: 18),
+          ),
+
+          // Highlights
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Highlights',
+                    style:
+                        Theme.of(context).textTheme.displayMedium),
+                const SizedBox(height: 16),
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade50,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 5)),
+                    ],
+                  ),
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Text('• Marketing-Website',
+                          style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 8),
+                      Text('• Interaktive Flutter-Formulare',
+                          style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 8),
+                      Text('• Responsive Designs',
+                          style: TextStyle(fontSize: 16)),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              onPressed: () {
-                if (ModalRoute.of(context)?.settings.name != '/projects') {
-                  Navigator.pushReplacementNamed(context, '/projects');
-                }
-              },
-              child: const Text('Projekte ansehen'),
-            ),
-            const SizedBox(height: 12),
-            ElevatedButton(
-              onPressed: () {
-                if (ModalRoute.of(context)?.settings.name != '/contact') {
-                  Navigator.pushReplacementNamed(context, '/contact');
-                }
-              },
-              child: const Text('Kontakt'),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
