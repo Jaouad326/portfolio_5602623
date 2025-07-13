@@ -36,7 +36,6 @@ class SummaryPage extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             Text('${sliderValue.round()}'),
-
             const SizedBox(height: 16),
             const Text(
               'Formulardaten:',
@@ -45,7 +44,6 @@ class SummaryPage extends StatelessWidget {
             Text('Name: $name'),
             Text('E-Mail: $email'),
             Text('Über mich: $about'),
-
             const SizedBox(height: 16),
             const Text(
               'Einstellungen:',

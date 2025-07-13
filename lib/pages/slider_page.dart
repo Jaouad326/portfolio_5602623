@@ -36,7 +36,12 @@ class _SliderPageState extends State<SliderPage> {
             },
           ),
           Text('Wert: ${_value.round()}'),
-          const SizedBox(height: 20),
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            width: _value * 3,
+            height: 10,
+            color: Colors.blue,
+          ),
           ElevatedButton(
             onPressed: () {
               Navigator.pop(context, _value);

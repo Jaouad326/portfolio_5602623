@@ -47,7 +47,6 @@ class _ProfileFormPageState extends State<ProfileFormPage> {
                 onPressed: () {
                   if (_formKey.currentState?.validate() ?? false) {
                     _formKey.currentState?.save();
-
                     Navigator.pop(context, {
                       'name': name,
                       'email': email,
