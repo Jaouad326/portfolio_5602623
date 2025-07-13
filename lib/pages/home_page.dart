@@ -1,108 +1,51 @@
 import 'package:flutter/material.dart';
-import 'slider_page.dart';
-import 'profile_form_page.dart';
-import 'settings_page.dart';
-import 'summary_page.dart';
+import 'projects_page.dart';
+import 'contact_page.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  double sliderValue = 0;
-  String name = '';
-  String email = '';
-  String about = '';
-  bool newsletter = false;
-  bool notifications = false;
-  bool darkMode = false;
-  bool offlineMode = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Portfolio von 5602623 - Achamlal, Jaouad'),
+        title: const Text('Mein Portfolio'),
+        centerTitle: true,
+        backgroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Willkommen im Portfolio von 5602623 - Achamlal, Jaouad',
-              textAlign: TextAlign.center,
+              'Hallo, ich bin Jaouad.',
+              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                final result = await Navigator.push<double>(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => SliderPage(initialValue: sliderValue),
-                  ),
-                );
-                if (result != null) {
-                  setState(() => sliderValue = result);
-                }
-              },
-              child: const Text('Zur Slider-Seite'),
+            const SizedBox(height: 12),
+            const Text(
+              'Willkommen in meinem Portfolio-Projekt.',
+              style: TextStyle(fontSize: 18),
             ),
-            ElevatedButton(
-              onPressed: () async {
-                final result = await Navigator.push<Map<String, String>>(
-                  context,
-                  MaterialPageRoute(builder: (_) => ProfileFormPage()),
-                );
-                if (result != null) {
-                  setState(() {
-                    name = result['name'] ?? '';
-                    email = result['email'] ?? '';
-                    about = result['about'] ?? '';
-                  });
-                }
-              },
-              child: const Text('Zum Formular'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                final result = await Navigator.push<Map<String, bool>>(
-                  context,
-                  MaterialPageRoute(builder: (_) => SettingsPage()),
-                );
-                if (result != null) {
-                  setState(() {
-                    newsletter = result['newsletter'] ?? false;
-                    notifications = result['notifications'] ?? false;
-                    darkMode = result['darkMode'] ?? false;
-                    offlineMode = result['offlineMode'] ?? false;
-                  });
-                }
-              },
-              child: const Text('Zu den Einstellungen'),
-            ),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder:
-                        (_) => SummaryPage(
-                          sliderValue: sliderValue,
-                          name: name,
-                          email: email,
-                          about: about,
-                          newsletter: newsletter,
-                          notifications: notifications,
-                          darkMode: darkMode,
-                          offlineMode: offlineMode,
-                        ),
-                  ),
+                  MaterialPageRoute(builder: (_) => const ProjectsPage()),
                 );
               },
-              child: const Text('Zur Zusammenfassung'),
+              child: const Text('Projekte ansehen'),
+            ),
+            const SizedBox(height: 12),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const ContactPage()),
+                );
+              },
+              child: const Text('Kontakt'),
             ),
           ],
         ),
