@@ -1,7 +1,7 @@
 # Portfolio 5602623 – Jaouad Achamlal
 
 Dies ist das Flutter-Projekt zur Abgabe von **Praktikumsblatt 3** im Modul EgB.  
-Das Projekt baut auf den ersten beiden Blättern auf und erweitert das Portfolio um eine modernisierte Startseite sowie weitere Seiten im Stil einer typischen Apple-Webseite.
+Das Projekt baut auf den ersten beiden Blättern auf und erweitert das Portfolio um eine modernisierte Startseite.
 
 ---
 
